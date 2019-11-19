@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8412477214585582651}
   - component: {fileID: 8412477214585582648}
   - component: {fileID: 6135297532730784089}
-  m_Layer: 0
+  - component: {fileID: -4646095653565828788}
+  m_Layer: 12
   m_Name: Attack_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,3 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe4caf9dcbfedd42893d7e727e3b342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageLayer: 9
+  splashDamage: 0
+  explosionPrefab: {fileID: 4120826045417350508, guid: 6a969501e46289731b68e17e10a0fa1d,
+    type: 3}
+--- !u!114 &-4646095653565828788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412477214585582649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45454c1ef6d00b11ba479466d9209f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  live_time: 5
