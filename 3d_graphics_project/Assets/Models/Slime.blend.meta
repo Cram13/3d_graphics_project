@@ -3,7 +3,17 @@ guid: 3ab1bb0b0ffc2955b9c5620d8c2b3f9c
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Slime
+    second: {fileID: 2100000, guid: 71585f7675623ecf8aa3aa0aa4777ab2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Slime-Outside
+    second: {fileID: 2100000, guid: 3e2fa0b42bfbcf5f6aec9076ab0463f0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -84,10 +94,10 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

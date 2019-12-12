@@ -3,7 +3,12 @@ guid: 974b4477395a98c0881e59cdc52fbef0
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Creeper
+    second: {fileID: 2100000, guid: b87efa55194f849fb8424593346fdb3e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a88e916535b6d47798851e2a23160d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthDrop: 0.5
-  minCurrencyDrop: 10
-  maxCurrencyDrop: 100
-  minExperienceDrop: 10
-  maxExperienceDrop: 100
+  healthDrop: 0.05
+  minCurrencyDrop: 1
+  maxCurrencyDrop: 10
+  minExperienceDrop: 1
+  maxExperienceDrop: 10

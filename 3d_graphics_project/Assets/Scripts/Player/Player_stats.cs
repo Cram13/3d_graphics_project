@@ -26,10 +26,14 @@ public class Player_stats : Character_stats
         playerStats.updateMovementSpeed();
 		reborn();
 	}
-	public void SpendCurrency(int amount){
+	public bool SpendCurrency(int amount){
+		if(amount>currency){
+			return false;
+		}
 		if(amount>0){
 			currency -= amount;
 		}
+		return true;
 
 	}
 
@@ -45,7 +49,7 @@ public class Player_stats : Character_stats
 				experience -= experienceForLevelUp;
 				experienceForLevelUp = (int)(experienceForLevelUp* grothForLevelUp);
 				level = level + 1;
-				Debug.Log("Level Up need to improove stats "+level);
+				//Debug.Log("Level Up need to improove stats "+level);
 				LevelUpCallback();
 			}
 		}

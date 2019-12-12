@@ -3,7 +3,12 @@ guid: 65ecdf1a6d873d2639637f08731b6c4d
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Snowman
+    second: {fileID: 2100000, guid: 0e002c15a39835cc28bdf92d508107b6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

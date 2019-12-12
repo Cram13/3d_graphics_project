@@ -3,7 +3,17 @@ guid: 0f346ae9861b7a36ebd20b85cd5f4bfe
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skeleton
+    second: {fileID: 2100000, guid: 20d291c148984c07a9e5c4365bb2f1b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skeleton-Eyes
+    second: {fileID: 2100000, guid: 598577881b0c4f661800496fc4569a58, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

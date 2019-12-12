@@ -3,7 +3,12 @@ guid: a4ff7f71576bb70ba8ca96ca5381fb4a
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Iron-Golem
+    second: {fileID: 2100000, guid: 42269a95e8bf77e88a0bbcc9346bc84f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

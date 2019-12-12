@@ -3,7 +3,12 @@ guid: 836f8c19350746a5cb73dd3968333614
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ocelot
+    second: {fileID: 2100000, guid: 6fd672de615ebfa19929b6b26b07093f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

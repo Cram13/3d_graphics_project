@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 
 enum Skills
@@ -14,8 +15,14 @@ enum Skills
     StatAttack, StatAttackSpeed, StatHP, StatMovementspeed
 }
 
+
 public class Skill_system : MonoBehaviour
 {
+    private string[] printNames = {
+            "Double Attack", "Diagonal Attack", "Back Attack",
+            "Splash Damage", "Big Bullets",
+            "Poison Attack", "Fire Attack", "Ice Attack",
+            "Stronger Attack", "Faster Attack", "More HP", "Move Faster"};
     public static Skill_system skill_system = null;
     public float incStatHP = 10;
     public float incStatAttack = 10;
@@ -27,18 +34,22 @@ public class Skill_system : MonoBehaviour
     private Player_attack player_attack;
     public GameObject skill_select_canvas;
     private List<Button> buttons;
+    private int skill_ctr=0; // counter how many skills can be learnd in case multiple level ups before skill selection
 
     void SelectSkill(){
-        // setup ui change names, later images and callbacks
-        //delegate void MyDelegateType();
-        var random = new System.Random();
-        foreach (Button button in buttons){
-            Skills cur_skill = skills_remaining[random.Next(skills_remaining.Count)];
-            button.GetComponentInChildren<Text>().text = ""+cur_skill;
-            button.onClick = new Button.ButtonClickedEvent();
-            button.onClick.AddListener(delegate{activateSkill(cur_skill);});
+        if(!skill_select_canvas.activeSelf){
+            var random = new System.Random();
+            foreach (Button button in buttons){
+                Skills cur_skill = skills_remaining[random.Next(skills_remaining.Count)];
+                button.GetComponentInChildren<TextMeshProUGUI>().text = ""+printNames[(int)cur_skill];
+                button.onClick = new Button.ButtonClickedEvent();
+                button.onClick.AddListener(delegate{activateSkill(cur_skill);});
+            }
+            skill_select_canvas.SetActive(true);
         }
-        skill_select_canvas.SetActive(true);
+        else{
+            skill_ctr +=1;
+        }
     }
     void activateSkill(Skills skill){
         skill_select_canvas.SetActive(false);
@@ -98,6 +109,10 @@ public class Skill_system : MonoBehaviour
                 Debug.Log("skill not found: " + skill);
                 break;
         }
+        if(skill_ctr>0){
+            skill_ctr -=1;
+            SelectSkill();
+        }
     }
     void Awake ()
 	{
@@ -130,6 +145,9 @@ public class Skill_system : MonoBehaviour
         player_stats.updateHealth();
         player_stats.movementSpeed.Reset();
         player_stats.updateMovementSpeed();
+
+        skill_select_canvas.SetActive(false);
+        skill_ctr = 0;
 
     }
     void Start()

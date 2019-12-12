@@ -57,11 +57,11 @@ MonoBehaviour:
   attack:
     baseValue: 10
   healtPoints:
-    baseValue: 10
+    baseValue: 20
   attackSpeed:
     baseValue: 1
   movementSpeed:
-    baseValue: 3
+    baseValue: 4
   status_effects: {fileID: 0}
 --- !u!33 &5065052191416752706
 MeshFilter:

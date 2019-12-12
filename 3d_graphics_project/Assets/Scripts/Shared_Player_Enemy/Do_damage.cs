@@ -7,6 +7,7 @@ public class Do_damage : MonoBehaviour
     public float damage {get; set;}
     public int damageLayer = 9; /*9 for enemy, 8 for player*/
     public bool splashDamage = false;
+    public bool blockable = true;
     
     public bool[] statusEffekt = {false,false,false};
     public float[] effectDamage = {0,0,0};
@@ -42,7 +43,7 @@ public class Do_damage : MonoBehaviour
         else if (col.gameObject.layer == 10/*RoomWalls*/){
             Destroy(this.gameObject);
         }
-        else if (col.gameObject.layer == 12/*Bullets*/){
+        else if (col.gameObject.layer == 12/*Bullets*/ && blockable){
             Destroy(this.gameObject);
         }
     }

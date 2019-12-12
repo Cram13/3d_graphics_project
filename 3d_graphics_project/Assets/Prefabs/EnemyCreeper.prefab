@@ -61,7 +61,7 @@ MonoBehaviour:
   attackSpeed:
     baseValue: 1
   movementSpeed:
-    baseValue: 3
+    baseValue: 5
   status_effects: {fileID: 0}
 --- !u!33 &531999725152496674
 MeshFilter:

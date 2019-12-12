@@ -57,7 +57,7 @@ MonoBehaviour:
   attack:
     baseValue: 10
   healtPoints:
-    baseValue: 10
+    baseValue: 15
   attackSpeed:
     baseValue: 1
   movementSpeed:
@@ -397,6 +397,12 @@ PrefabInstance:
       propertyPath: statusEffekt.Array.data[2]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4169237693090434074, guid: 037aa4d80da26b98d9f7df0f498e380b,
+        type: 3}
+      propertyPath: attackObj
+      value: 
+      objectReference: {fileID: 7910956628383907496, guid: 6f0c23121e887323a8f2deab133a5eb0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 037aa4d80da26b98d9f7df0f498e380b, type: 3}
 --- !u!4 &8013730769898461711 stripped

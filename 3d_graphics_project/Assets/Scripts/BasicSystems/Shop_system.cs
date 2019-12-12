@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Shop_system : MonoBehaviour
@@ -11,19 +12,34 @@ public class Shop_system : MonoBehaviour
         attack, attackSpeed, healtPoints, movementSpeed
     }
     public static Shop_system shop=null;
-    public List<Text> buttonTexts = new List<Text>(4);
+    public List<TextMeshProUGUI> buttonTexts = new List<TextMeshProUGUI>(4);
+    public TextMeshProUGUI currentCoins = null;
     public int[] upgradeLevel = {1,1,1,1};
     public string[] buttonBaseText = {"attack: ", "attackSpeed: ", "healtPoints: ", "movementSpeed: "};
     
     public float[] upgradePerLevel = {1,1,1,1};
-    public int[] price = {10,10,10,10};
+    public int[] price = {100,100,100,100};
 
     public void upgrade(ShopUpgrades shopUpgrades){
         if(price[(int)shopUpgrades]<Player_stats.playerStats.currency){
-            Player_stats.playerStats.SpendCurrency(price[(int)shopUpgrades]);
-            upgradeLevel[(int)shopUpgrades] +=1;
-            buttonTexts[(int)shopUpgrades].text =buttonBaseText[(int)shopUpgrades]+upgradeLevel[(int)shopUpgrades];
-            price[(int)shopUpgrades] = (int)(price[(int)shopUpgrades]*1.5f);
+            bool succes = Player_stats.playerStats.SpendCurrency(price[(int)shopUpgrades]);
+            if(succes){
+                upgradeLevel[(int)shopUpgrades] +=1;
+                buttonTexts[(int)shopUpgrades].text = "Price: "+price[(int)shopUpgrades]+"\nLevel: "+upgradeLevel[(int)shopUpgrades];
+                price[(int)shopUpgrades] = (int)(price[(int)shopUpgrades]*1.5f);
+                updateCurrentCoins();
+            }
+        }
+    }
+    public void OnEnable(){
+        updateCurrentCoins();
+        for(int i=0;i<4;i++){
+            buttonTexts[i].text = "Price: "+price[i]+"\nLevel: "+upgradeLevel[i];
+        }
+    }
+    public void updateCurrentCoins(){
+        if(Player_stats.playerStats!=null){
+            currentCoins.text = "Current Coins: " + Player_stats.playerStats.currency;
         }
     }
     public void upgradeAttack(){
@@ -31,12 +47,15 @@ public class Shop_system : MonoBehaviour
     }
     public void upgradeAttackSpeed(){
         upgrade(ShopUpgrades.attackSpeed);
+        Player_stats.playerStats.updateAttackSpeed();
     }
     public void upgradeHealtPoints(){
         upgrade(ShopUpgrades.healtPoints);
+        Player_stats.playerStats.updateHealth();
     }
     public void upgradeMovementSpeed(){
         upgrade(ShopUpgrades.movementSpeed);
+        Player_stats.playerStats.updateMovementSpeed();
     }
     public void applyUpgrades(){
         for(int i=1; i<upgradeLevel[(int)ShopUpgrades.attack];i++){
@@ -64,5 +83,10 @@ public class Shop_system : MonoBehaviour
             Debug.Log("multiple shop systems");
         }
     }
-    
+        void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.C)){
+            Player_stats.playerStats.GainCurrency(1000);
+        }
+    }
 }

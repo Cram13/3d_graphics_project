@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Player_stats))]
 public class Player_attack : MonoBehaviour
@@ -30,7 +31,7 @@ public class Player_attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1")){
+        if(Input.GetButton("Fire1") && !EventSystem.current.IsPointerOverGameObject()){
             if(player_stats.attackReady){
                 //Vector3 direction = AimAt();
                 if(!shootDoubleFront){
@@ -63,7 +64,7 @@ public class Player_attack : MonoBehaviour
         do_damage.statusEffekt = statusEffekt;
         do_damage.effectDamage = effectDamage;
         if(bigBullet){
-            bullet.transform.localScale *= 4;
+            bullet.transform.localScale *= 2;
         }
     }
 }

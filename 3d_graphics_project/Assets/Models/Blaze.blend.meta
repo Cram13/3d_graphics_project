@@ -3,7 +3,12 @@ guid: 9cba8c5d98a22fda09ff5ffda6257a80
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blaze
+    second: {fileID: 2100000, guid: 2c399686857c1a374b7e195ac0f84158, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

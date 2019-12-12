@@ -9,6 +9,8 @@ public class Drop_system : MonoBehaviour
     public GameObject health;
     public int healthValue = 10;
 
+    public int value_per_coin = 10;
+    public float drop_force=10;
     public void cleanDrops(){
         foreach(Transform child in transform){
             Destroy(child.gameObject);
@@ -17,10 +19,16 @@ public class Drop_system : MonoBehaviour
     }
     void DropCurrency(Transform trans, int min_amount, int max_amount){
         int ammount = Random.Range(min_amount, max_amount);
-        GameObject obj = Instantiate(currency, trans.position, new Quaternion(), gameObject.transform);
-        Collectable collectable = obj.GetComponent<Collectable>();
-        collectable.value = ammount;
-        collectable.collectabelType = (int)collectabel_type.Currency;
+        int nr_drops = (int)(ammount/value_per_coin);
+        int drop_amount = ammount/nr_drops;
+        for(int i=0; i<nr_drops;i++){
+            Vector3 force = new Vector3(Random.Range(-1.0f,1.0f),0.0f,Random.Range(-1.0f,1.0f)).normalized*Random.Range(0.0f,drop_force);
+            GameObject obj = Instantiate(currency, trans.position, new Quaternion(), gameObject.transform);
+            Collectable collectable = obj.GetComponent<Collectable>();
+            collectable.value = drop_amount;
+            collectable.collectabelType = (int)collectabel_type.Currency;
+            obj.GetComponent<Rigidbody>().AddForce(force);
+        }
     }
 
     void DropExperience(Transform trans, int min_amount, int max_amount){
@@ -34,7 +42,7 @@ public class Drop_system : MonoBehaviour
     void DropHealth(Transform trans, float drop_chance){
         bool drop = Random.Range(0.0f,1.0f)<drop_chance;
         if(drop){
-            GameObject obj = Instantiate(experience, trans.position, new Quaternion(), gameObject.transform);
+            GameObject obj = Instantiate(health, trans.position, new Quaternion(), gameObject.transform);
             Collectable collectable = obj.GetComponent<Collectable>();
             collectable.value = healthValue;
             collectable.collectabelType = (int)collectabel_type.Health;
