@@ -16,9 +16,14 @@ public class MenuActions : MonoBehaviour
     public void switchToMainMenuScene(){
         SceneManager.LoadScene(MainMenu);
     }
+    public void OnLoadGame(Scene scene, LoadSceneMode mode){
+        if(scene.name == Game){
+            Shop_system.shop.load();
+        }
+    }
     public void switchToLoadGameScene(){
-        Debug.Log("need to implement the loading/storing stuff");
         SceneManager.LoadScene(Game);
+        SceneManager.sceneLoaded += OnLoadGame;
     }
     public void switchToIntroScene(){
         SceneManager.LoadScene(Intro);
@@ -28,6 +33,9 @@ public class MenuActions : MonoBehaviour
     }
     
     public void exitGame(){
+        if(Shop_system.shop != null){
+            Shop_system.shop.save();
+        }
         Application.Quit();
     }
 }

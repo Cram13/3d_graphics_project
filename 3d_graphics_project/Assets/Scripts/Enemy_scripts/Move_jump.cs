@@ -38,7 +38,7 @@ public class Move_jump : MonoBehaviour
     }
     void jump(){
         float angle = Random.Range(-20.0f,20.0f);
-        rb.AddForce(Quaternion.Euler(0, angle, 0) * (Player_stats.player.transform.position - transform.position).normalized*jumpForce);
+        rb.AddForce(Quaternion.Euler(0, angle, 0) * transform.forward.normalized*jumpForce);
     }
     IEnumerator coroutineJump(){
         while(true){

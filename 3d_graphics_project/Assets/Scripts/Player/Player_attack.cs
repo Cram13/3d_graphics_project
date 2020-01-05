@@ -38,7 +38,7 @@ public class Player_attack : MonoBehaviour
                     ShootBullet(transform.forward, transform.position);
                 }
                 if(shootDoubleFront){
-                    Vector3 displacement = new Vector3(0.5f, 0,0);
+                    Vector3 displacement = Vector3.Cross(transform.forward, transform.up).normalized * 0.5f;
                     ShootBullet(transform.forward, transform.position + displacement);
                     ShootBullet(transform.forward, transform.position - displacement);
                 }

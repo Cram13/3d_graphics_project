@@ -28,13 +28,13 @@ public class Status_effects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)){
+        if (Player_stats.playerStats.enable_keys_for_testing && Input.GetKeyDown(KeyCode.P)){
             addEffect(EffectName.Poison,10,2);
         }
-        if (Input.GetKeyDown(KeyCode.F)){
+        if (Player_stats.playerStats.enable_keys_for_testing && Input.GetKeyDown(KeyCode.F)){
             addEffect(EffectName.Fire,10,2);
         }
-        if (Input.GetKeyDown(KeyCode.I)){
+        if (Player_stats.playerStats.enable_keys_for_testing && Input.GetKeyDown(KeyCode.I)){
             addEffect(EffectName.Ice,0,2);
         }
     }

@@ -8,6 +8,7 @@ public class Explosion_damage : MonoBehaviour
     public float damage {get; set;}
     public bool[] statusEffekt = {false,false,false};
     public float[] effectDamage = {0,0,0};
+    public float explosionTime = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class Explosion_damage : MonoBehaviour
             }
             character_stats.TakeDamage(damage);
         }
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, explosionTime);
     }
     // Update is called once per frame
     void Update()

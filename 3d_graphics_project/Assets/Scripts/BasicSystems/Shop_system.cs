@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.IO; 
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 public class Shop_system : MonoBehaviour
@@ -19,6 +22,44 @@ public class Shop_system : MonoBehaviour
     
     public float[] upgradePerLevel = {1,1,1,1};
     public int[] price = {100,100,100,100};
+    private String savePath = "";
+    private String saveFileName = "/gamesave.save";
+
+
+    [System.Serializable]
+    public class Save{
+        public int[] upgradeLevel;
+        public int[] price;
+        public int coins;
+    }
+    public void save(){
+        //save level, price, coins to file
+        Save save = new Save();
+        save.upgradeLevel = upgradeLevel;
+        save.price = price;
+        save.coins = Player_stats.playerStats.currency;
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(savePath);
+        bf.Serialize(file, save);
+        file.Close();
+    }
+    public void load(){
+        if(File.Exists(savePath)){
+            // restore level, price, coins from file
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(savePath, FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+            upgradeLevel = save.upgradeLevel;
+            price = save.price;
+            Player_stats.playerStats.GainCurrency(save.coins);
+            //update player caracters
+            Player_stats.playerStats.updateAttackSpeed();
+            Player_stats.playerStats.updateHealth();
+            Player_stats.playerStats.updateMovementSpeed();
+            OnEnable();
+        }
+    }
 
     public void upgrade(ShopUpgrades shopUpgrades){
         if(price[(int)shopUpgrades]<Player_stats.playerStats.currency){
@@ -76,6 +117,7 @@ public class Shop_system : MonoBehaviour
         Player_stats.playerStats.updateMovementSpeed();
     }
     void Awake (){
+        savePath = Application.persistentDataPath + saveFileName;
         if(shop == null){
             shop = this;
         }
@@ -85,7 +127,7 @@ public class Shop_system : MonoBehaviour
     }
         void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C)){
+        if(Player_stats.playerStats.enable_keys_for_testing && Input.GetKeyDown(KeyCode.C)){
             Player_stats.playerStats.GainCurrency(1000);
         }
     }

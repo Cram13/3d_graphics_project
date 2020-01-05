@@ -6,6 +6,7 @@ using System;
 public class Player_stats : Character_stats
 {
 	public static GameObject player;
+	public bool enable_keys_for_testing = false;
 	public GameObject deathScreen;
 	public static Player_stats playerStats;
 	public int currency{ get; protected set; } = 0;
@@ -63,6 +64,7 @@ public class Player_stats : Character_stats
 	}
 	public override void Die()
 	{	
+		Shop_system.shop.save();
 		deathScreen.SetActive(true);
 		base.Die();
 

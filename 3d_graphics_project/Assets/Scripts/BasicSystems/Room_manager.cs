@@ -72,7 +72,7 @@ public class Room_manager : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B)){
+        if(Player_stats.playerStats.enable_keys_for_testing && Input.GetKeyDown(KeyCode.B)){
             Drop_system.instance.cleanDrops();
             int ctr_end = 30;
             Player.transform.position = rooms[ctr_end].startPos.transform.position;
@@ -82,7 +82,7 @@ public class Room_manager : MonoBehaviour
             activeRoom = rooms[ctr_end];       
             ctr = ctr_end;     
         }
-        if(Input.GetKeyDown(KeyCode.K)){// ugly to work for spliting enemies removed in the end
+        if(Player_stats.playerStats.enable_keys_for_testing && Input.GetKeyDown(KeyCode.K)){// ugly to work for spliting enemies removed in the end
             /*List<GameObject> Enemies = new List<GameObject>(activeRoom.Enemies);
             foreach(GameObject e in Enemies){
                 e.GetComponent<Enemy_stats>().Die();

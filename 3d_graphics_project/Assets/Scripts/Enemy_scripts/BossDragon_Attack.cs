@@ -116,7 +116,7 @@ public class BossDragon_Attack : MonoBehaviour
     IEnumerator attackJump(){
         attack = true;
         yield return new WaitForSeconds(jumpDelay);
-        rb.AddForce((Player_stats.player.transform.position - transform.position).normalized*jumpForce);
+        rb.AddForce(transform.forward.normalized*jumpForce);
         yield return new WaitForSeconds(jumpDuration);
         do{
             yield return null;

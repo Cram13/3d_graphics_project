@@ -48,16 +48,13 @@ public class Explode_attack : MonoBehaviour
 
     IEnumerator explodeDelay(){
         move_Enemy.move = false;
-        Debug.Log("explode stop moving");
         yield return new WaitForSeconds(explosionDelay);
-        if(player_in_range){
-                GameObject explosion = Instantiate(explosionPrefab, transform.position, new Quaternion());
-                Explosion_damage do_damage = explosion.GetComponent<Explosion_damage>();
-                do_damage.damage = enemy_Stats.attack.GetValue();
-                do_damage.damageLayer = 8 /*Player*/;
-                do_damage.statusEffekt = statusEffekt;
-                do_damage.effectDamage = effectDamage;
-        }
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, new Quaternion());
+        Explosion_damage do_damage = explosion.GetComponent<Explosion_damage>();
+        do_damage.damage = enemy_Stats.attack.GetValue();
+        do_damage.damageLayer = 8 /*Player*/;
+        do_damage.statusEffekt = statusEffekt;
+        do_damage.effectDamage = effectDamage;
         exploding = false;
         move_Enemy.move = true;
         enemy_Stats.Die();
