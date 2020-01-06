@@ -14,15 +14,21 @@ The main features are:
   Basic stats which can be improved by spending the collected coins
  
 Implementation Details:
+
   Goal was a modular approach which allows a tool box system for building new enemies. I decide to combine all basic functionalities like basic stats as Attack, Attack Speed, Movement Speed and Health points into one Character class and derive from this class the enemies and player class. These are the fundamental parts of all characters (Player and enemies). The other common traits are implemented as prefabs. These are then added as children to the gameobject with the base class. This added prefabs will then handle all parts related to the prefab and use the data of the base class. Some examples would be the attack itself, the display of status effects, dropping experience and currency
 
   
 Run instructions:
-  Download the prebuild versions for Windows(not tested) and Linux here::: and run the exe or x86_64 file to start the game
+
+  Download the prebuild versions for Windows(not tested) and Linux from itch.io(https://cram13.itch.io/minecraft-dungeon) and run the exe or x86_64 file to start the game or try the not tested Web version on itch.io
+  
   or 
+  
   Use the Unity3d editor
+  
   Prerequisits: Unity3d(developed and tested with 2019.2.4f1) and Blender(2.80)
-  Download this repository and open it with the Unity3d editor then hit the play button at the top
+  
+  Download this repository and open it with the Unity3d editor then hit the play button at the top.
   This version allows you to manipulate all variables and modify the game as you like.
   
   
