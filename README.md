@@ -1,4 +1,7 @@
 Minecraft Dungeon
+
+
+
 I was inspired by the mobile game Archero to develop a 3d top down shooter as well. Top down shooters or Shoot 'em ups how they are also called are are a subgenre of shooters which were most famous in arcade games such as space invaders or Asteroids or Galaxian. One common factor for such games is the fight against multiple enemies while at the same point dodging their attacks by avoiding their bullets. Which will also be a main game mechanic in my game. 
 
 
