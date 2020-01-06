@@ -30,9 +30,14 @@ In the unity editor within the player stats script you can enable keys for actio
 The Keys are:
 
 P - apply poison effect to all enemies and the player in the room
+
 F - apply fire effect to all enemies and the player in the room
+
 I - apply ice effect to all enemies and the player in the room
+
 C - gain 1000 coins
+
 K - kill all enemies in the room (results in an error in the console which doesn't have an effect on the game)
+
 B - jump to the boss level
 
